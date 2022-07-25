@@ -19,10 +19,10 @@ n2 = int(input("Digite o segundo número: "))
 print("*********************************")
 
 if(n1 > n2):
-    print("O número escolhido estará entre ", n2, "e", n1)
+    print("O número escolhido estará entre {} e {}".format(n2,n1))
     numero_random = random.randint(n2, n1)
 elif(n2 > n1):
-    print("O número escolhido estará entre ", n1, "e", n2)
+    print("O número escolhido estará entre {} e {}".format(n1,n2))
     numero_random = random.randint(n1, n2)
 else:
     print("Os números não podem ser iguais")
@@ -34,26 +34,24 @@ chute = int(input("Digite sua tentativa: "))
 numeros_tentados.append(chute)
 
 print("*********************************")
+
 while (chute != numero_random):
     tentativas += 1
     if (chute < numero_random):
-        print("Você errou, Está é a", tentativas,
-            "º tentativa", "\n", "Tente novamente, com um número maior")
+        print("Você errou, Está é a {}º tentativa \n Tente novamente, com um número maior".format(tentativas))
     else:
-        print("Você errou, Está é a", tentativas,
-            "º tentativa", "\n", "Tente novamente, com um número menor")
+        print("Você errou, Está é a {}º tentativa \n Tente novamente, com um número menor".format(tentativas))
     chute = int(input("Digite sua palpite: "))
     numeros_tentados.append(chute)
     print("*********************************")
 if(chute == numero_random):
-    print("Você chutou o numero", chute, "e acertou!!", "\n"
-          "*****o número gerado foi ", numero_random, "*****")
+    print("Você chutou o numero {} e acertou!! \n *****o número gerado foi {} *****".format(chute, numero_random))
     if (tentativas == 1):
         print("*****Você acertou de primeira****")
     else:
-        print("Só foram ", tentativas, "tentativas, Parabéns!")
-        print("Seus chutes foram ", numeros_tentados)
+        print("Só foram  {} tentativas, Parabéns! \n Seus chutes foram {}".format(tentativas,  numeros_tentados))
     print("*********************************")
     print("********** Fim do jogo **********")
 
 print("*********************************")
+
