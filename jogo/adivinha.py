@@ -1,57 +1,77 @@
 import random
-import os
 import sys
 
 print("*********************************")
 print("Bem vindo ao jogo de adivinhação!")
 print("*********************************")
 
-cur = dir(os)
-tentativas = 1
-numeros_tentados = []
+rodada = 1
+total_de_tentativas = 0
+pontos = 1000
+numeros_chutados = []
 
 print("Será sorteado um número inteiro, entre o intervalo escolhido!", "\n",
-      "lembre-se que não podem ser números iguais")
+      "lembre-se que não podem ser números iguais!")
 print("*********************************")
-n1 = int(input("Digite o primeiro número: "))
+n1 = int(input("Digite o menor valor: "))
 print("*********************************")
-n2 = int(input("Digite o segundo número: "))
+n2 = int(input("Digite o maior valor: "))
 print("*********************************")
 
-if(n1 > n2):
-    print("O número escolhido estará entre {} e {}".format(n2,n1))
-    numero_random = random.randint(n2, n1)
-elif(n2 > n1):
-    print("O número escolhido estará entre {} e {}".format(n1,n2))
-    numero_random = random.randint(n1, n2)
+if(n2 > n1):
+    print("O número escolhido estará entre {} e {}".format(n1, n2))
+    numero_secreto = random.randint(n1, n2)
 else:
-    print("Os números não podem ser iguais")
+    print("O intervao tem que ser informado com menor e maior valor nesta ordem!")
     print("****** Fim do jogo ******")
     sys.exit()
 print("*********************************")
 
-chute = int(input("Digite sua tentativa: "))
-numeros_tentados.append(chute)
+print("Qual o nível de dificuldade?")
+print("(1) Fácil (2) Médio (3) Difícil")
 
-print("*********************************")
+nivel = int(input("Defina o nível: "))
 
-while (chute != numero_random):
-    tentativas += 1
-    if (chute < numero_random):
-        print("Você errou, Está é a {}º tentativa \n Tente novamente, com um número maior".format(tentativas))
-    else:
-        print("Você errou, Está é a {}º tentativa \n Tente novamente, com um número menor".format(tentativas))
-    chute = int(input("Digite sua palpite: "))
-    numeros_tentados.append(chute)
+if(nivel == 1):
+    total_de_tentativas = 20
+elif(nivel == 2):
+    total_de_tentativas = 10
+else:
+    total_de_tentativas = 5
+    
+while (rodada <= total_de_tentativas):
+    print("Tentativa {} de {}".format(rodada, total_de_tentativas))
+
+    chute = int(input("Digite o seu número: "))
+    print("Você digitou ", chute)
+    if((chute < n1) or (chute > n2)):
+        print("Você deve digitar um número válido")
+        rodada = rodada + 1
+        continue
     print("*********************************")
-if(chute == numero_random):
-    print("Você chutou o numero {} e acertou!! \n *****o número gerado foi {} *****".format(chute, numero_random))
-    if (tentativas == 1):
-        print("*****Você acertou de primeira****")
+
+    acertou = chute == numero_secreto
+    errou = ((rodada == total_de_tentativas) and (chute != numero_secreto))
+    maior = chute > numero_secreto
+    menor = chute < numero_secreto
+
+    if(errou):
+        print("Game Over, O numero secreto era {} \n ".format(numero_secreto))
+        print("*********************************")
+        break
+    elif(acertou):
+        numeros_chutados.append(chute)
+        print("Parabéns! Você acertou! O número secreto era {} \n E esses foram seus chutes {}".format(
+            numero_secreto, numeros_chutados))
+        print("*********************************")
+        break
     else:
-        print("Só foram  {} tentativas, Parabéns! \n Seus chutes foram {}".format(tentativas,  numeros_tentados))
-    print("*********************************")
-    print("********** Fim do jogo **********")
+        if(maior):
+            print("O seu chute foi maior do que o número secreto!")
+            print("*********************************")
+        elif(menor):
+            print("O seu chute foi menor do que o número secreto!")
+            print("*********************************")
 
-print("*********************************")
-
+    numeros_chutados.append(chute)
+    rodada = rodada + 1
