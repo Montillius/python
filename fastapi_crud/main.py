@@ -9,7 +9,7 @@ app = FastAPI()
 # lista
 classificacoes = []
 
-# Post model
+# model
 class Classificacao_model(BaseModel):
     id: Optional[str]
     posicao: str
