@@ -8,7 +8,7 @@ class Classificacao_model(BaseModel):
     pontos:int
     jogos: int      
     vitorias: int 
-    emaptes: int 
+    empates: int 
     derrotas: int 
     gols_feitos: int 
     gols_sofridos: int 

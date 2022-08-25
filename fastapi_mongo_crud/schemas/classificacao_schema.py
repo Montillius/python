@@ -1,6 +1,6 @@
 def classificacao(dados) -> dict:
     return {
-            'id': dados['id'],
+            'id': str(dados['_id']),
             'posicao': dados['posicao'],
             'time': dados['time'],
             'jogos': dados['jogos'],
@@ -14,4 +14,4 @@ def classificacao(dados) -> dict:
     }
     
 def tabela_classificacao(entidade)-> list:
-        [classificacao(dados) for dados in entidade ]
+        return [classificacao(dados) for dados in entidade ]
