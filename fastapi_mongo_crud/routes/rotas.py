@@ -6,23 +6,24 @@ from config.db import conexao
 from models.classificacoes_model import Classificacao_model
 from schemas.classificacao_schema import classificacao, tabela_classificacao
 
+
 table = APIRouter()
 
 
 # visualizar
-@table.get('/users', response_model=list[Classificacao_model], tags=["users"])
+@table.get('/users')
 def find_all_classificacao():
     return tabela_classificacao(conexao.local.classificacoes.find())
 
 
 # visualizar único
-@table.get('/tabela/{id}', response_model = Classificacao_model, tags=['tabela_campeonato'])
+@table.get('/tabela/{id}')
 def find_classificacao(id: str):
     return classificacao(conexao.local.classificacoes.find_one({'_id': ObjectId(id)}))
 
 
 # cadastrar
-@table.post('/tabela/cadastrar', response_model = Classificacao_model, tags=['tabela_campeonato'])
+@table.post('/tabela/cadastrar')
 def create_classificacao(dados: Classificacao_model):
     nova_classificacao = dict(dados)
     del nova_classificacao['id']
@@ -32,7 +33,7 @@ def create_classificacao(dados: Classificacao_model):
 
 
 # editar
-@table.put('/tabela/editar/{id}', response_model = Classificacao_model, tags=['tabela_campeonato'])
+@table.put('/tabela/editar/{id}')
 def update_classificacao(id: str, dados: Classificacao_model):
     conexao.local.classificacoes.find_one_and_update(
         {'_id': ObjectId(id)}, {'$set': dict(dados)})
