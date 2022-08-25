@@ -14,4 +14,4 @@ def classificacao(dados) -> dict:
     }
     
 def tabela_classificacao(entidade)-> list:
-        return [classificacao(dados) for dados in entidade ]
+    return [classificacao(dados) for dados in entidade ]

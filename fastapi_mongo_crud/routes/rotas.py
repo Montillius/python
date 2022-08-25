@@ -1,15 +1,16 @@
 from fastapi import APIRouter, Response, status
+from bson import ObjectId
+from starlette.status import HTTP_204_NO_CONTENT
+
 from config.db import conexao
 from models.classificacoes_model import Classificacao_model
 from schemas.classificacao_schema import classificacao, tabela_classificacao
-from bson import ObjectId
-from starlette.status import HTTP_204_NO_CONTENT
 
 table = APIRouter()
 
 
 # visualizar
-@table.get('/tabela',tags=['tabela_campeonato'])
+@table.get('/users', response_model=list[Classificacao_model], tags=["users"])
 def find_all_classificacao():
     return tabela_classificacao(conexao.local.classificacoes.find())
 
