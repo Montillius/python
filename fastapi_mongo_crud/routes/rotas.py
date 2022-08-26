@@ -36,12 +36,12 @@ def create_classificacao(dados: Classificacao_model):
 # editar
 @table.put('/tabela/editar/{id}', tags=['tabela'])
 def update_classificacao(id: str, dados: Classificacao_model):
-    conexao.local.classificacoes.find_one_and_update(
-        {'_id': ObjectId(id)}, {'$set': dict(dados)})
+    conexao.local.classificacoes.find_one_and_update({'_id': ObjectId(id)}, {'$set': dict(dados)})
     return classificacao(conexao.local.classificacoes.find_one({'_id': ObjectId(id)}))
 
+
 # excluir
-@table.delete('/tabela/excluir/{id}', status_code = status.HTTP_204_NO_CONTENT, tags=['tabela'])
+@table.delete('/tabela/excluir/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=['tabela'])
 def delete_classificacao(id: str):
     classificacao(conexao.local.classificacoes.find_one_and_delete({'_id': ObjectId(id)}))
     return Response(status_code=HTTP_204_NO_CONTENT)
