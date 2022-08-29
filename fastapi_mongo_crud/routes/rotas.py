@@ -10,6 +10,10 @@ from src import scraping
 
 table = APIRouter()
 
+# Home
+@table.get('/', tags=['tabela'])
+def home():
+    return {'Message': 'Bem vindo!'}
 
 # visualizar
 @table.get('/tabela', tags=['tabela'])
@@ -47,6 +51,6 @@ def delete_classificacao(id: str):
     return Response(status_code=HTTP_204_NO_CONTENT)
 
 # scraping
-@table.get('/tabela/campeonato_italiano')
-def get_scraping(result: list):
-    return scraping.geral()
+@table.get('/tabela/campeonato_italiano', tags=['scraper'])
+def get_scraping():
+    return scraping.champion_italy()

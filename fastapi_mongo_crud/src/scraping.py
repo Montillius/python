@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-def geral():
+
+def champion_italy():
     url = 'https://www.uol.com.br/esporte/futebol/campeonatos/italiano/'
     response = requests.get('https://www.uol.com.br/esporte/futebol/campeonatos/italiano/')
 
@@ -44,3 +45,5 @@ def geral():
         classificacao.update(score)
         result = classificacoes
     return result
+    
+
