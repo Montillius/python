@@ -1,4 +1,5 @@
 from http.client import responses
+from typing_extensions import Self
 from fastapi import APIRouter, Response, status
 from bson import ObjectId
 from starlette.status import HTTP_204_NO_CONTENT
@@ -6,9 +7,10 @@ from starlette.status import HTTP_204_NO_CONTENT
 from config.db import conexao
 from models.classificacoes_model import Classificacao_model
 from schemas.classificacao_schema import classificacao, tabela_classificacao
-from src import scraping
+from src.scraping import champion_italy
 
 table = APIRouter()
+
 
 # Home
 @table.get('/', tags=['tabela'])
@@ -53,4 +55,4 @@ def delete_classificacao(id: str):
 # scraping
 @table.get('/tabela/campeonato_italiano', tags=['scraper'])
 def get_scraping():
-    return scraping.champion_italy()
+    return champion_italy()
