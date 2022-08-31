@@ -13,22 +13,32 @@ class Conta:
     def depositar(self, valor):
         self.__saldo += valor
 
+    def pode_sacar(self):
+        pass
+
     def sacar(self, valor):
-        self.__saldo -= valor
+        if(self.pode_sacar(valor)):
+            self.__saldo -= valor
+        else:
+            print('O valor {} passou o limte'.format(valor))
 
     # O self serve para chamar métodos ou atributos
     def transferir(self, valor, destino):
         self.sacar(valor)
         destino.depositar(valor)
         
-    def get_saldo(self):
-        return self.__saldo 
+    @property
+    def saldo(self):
+        return self.__saldo
     
-    def get_titular(self):
+    @property
+    def titular(self):
         return self.__titular
     
-    def get_limite(self):
+    @property
+    def limite(self):
         return self.__limite
     
-    def set_limite(self, limite):
+    @limite.setter
+    def limite(self, limite):
         self.__limite = limite
