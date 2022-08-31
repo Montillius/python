@@ -1,10 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-def champion_italy():
+async def champion_italy():
     url = 'https://www.uol.com.br/esporte/futebol/campeonatos/italiano/'
-    response = requests.get('https://www.uol.com.br/esporte/futebol/campeonatos/italiano/')
+    response = requests.get(url)
 
     soup = BeautifulSoup(response.content, 'html.parser')
 

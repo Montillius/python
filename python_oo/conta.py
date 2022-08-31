@@ -27,9 +27,6 @@ class Conta:
     def get_titular(self):
         return self.__titular
     
-    def set_titular(self, titular):
-        self.__titular = titular
-    
     def get_limite(self):
         return self.__limite
     

@@ -14,3 +14,5 @@ class Classificacao_model(BaseModel):
     gols_sofridos: int 
     saldo_de_gols: int 
     aproveitamento: int 
+    
+    
