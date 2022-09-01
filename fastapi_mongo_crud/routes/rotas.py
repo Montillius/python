@@ -52,5 +52,5 @@ async def delete_classificacao(id: str):
 
 # scraping
 @table.get('/tabela/campeonato_italiano', tags=['scraper'])
-def get_scraping(dados:Classificacao_model):
-    return champion_italy(dados)
+def get_scraping():
+    return champion_italy()

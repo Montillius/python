@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-async def champion_italy():
+def champion_italy():
     url = 'https://www.uol.com.br/esporte/futebol/campeonatos/italiano/'
     response = requests.get(url)
 
