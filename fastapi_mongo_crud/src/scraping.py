@@ -39,8 +39,9 @@ def champion_italy():
             'aproveitamento':tds2[8].text
         }
         pontuacao.append(score)
-        
+
     for classificacao in classificacoes:
+        result = []
         classificacao.update(score)
         result = classificacoes
     return result
