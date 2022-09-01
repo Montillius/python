@@ -8,7 +8,6 @@ def champion_italy():
     soup = BeautifulSoup(response.content, 'html.parser')
 
     classificacoes = []
-    table = soup.find('table',class_= 'data-table name')
     tbody = soup.find('tbody')
     trs = tbody.find_all('tr')
 
@@ -21,7 +20,6 @@ def champion_italy():
         classificacoes.append(classificacao)
 
     pontuacao = []
-    table2 = soup.find('table',class_= 'data-table score')
     tbody2 = soup.find('tbody',class_= 'score')
     trs2 = tbody2.find_all('tr')
 
