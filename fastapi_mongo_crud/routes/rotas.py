@@ -5,7 +5,6 @@ from starlette.status import HTTP_204_NO_CONTENT
 from config.db import conexao
 from models.classificacoes_model import Classificacao_model
 from schemas.classificacao_schema import classificacao, tabela_classificacao
-from src.scraping import champion_italy
 
 table = APIRouter()
 
@@ -48,9 +47,3 @@ async def update_classificacao(id: str, dados: Classificacao_model):
 async def delete_classificacao(id: str):
     classificacao(conexao.local.classificacoes.find_one_and_delete({'_id': ObjectId(id)}))
     return Response(status_code=HTTP_204_NO_CONTENT)
-
-
-# scraping
-@table.get('/tabela/campeonato_italiano', tags=['scraper'])
-def get_scraping(dados: list[Classificacao_model]):
-    return champion_italy(dados)

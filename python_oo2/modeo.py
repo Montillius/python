@@ -58,4 +58,5 @@ print(f'Nome:{vingadores.nome} - Ano:{vingadores.ano} - Temporadas:{vingadores.d
 atlanta = Serie('atlanta', 2018, 2)
 atlanta.nome = 'atlanta - de glover'
 atlanta.add_like()
-print(f'Nome:{atlanta.nome} - Ano:{atlanta.ano} - Temporadas:{atlanta.temporadas} - Likes: {atlanta.likes}')
+atlanta.add_like()
+print(f'Nome: {atlanta.nome} - Ano: {atlanta.ano} - Temporadas: {atlanta.temporadas} - Likes: {atlanta.likes}')
