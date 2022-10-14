@@ -22,14 +22,14 @@ class Programa:
     def __str__(self):
         return f'Nome: {self.nome} Likes: {self.likes}'
 
+
 class Filme(Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
-    
+
     def __str__(self):
         return f'Nome: {self.nome} - {self.duracao} min - Likes: {self.likes}'
-
 
 
 class Serie(Programa):
@@ -39,6 +39,7 @@ class Serie(Programa):
 
     def __str__(self):
         return f'Nome: {self.nome} - {self.temporadas} temporadas - Likes: {self.likes}'
+
 
 vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 atlanta = Serie('atlanta', 2018, 2)
