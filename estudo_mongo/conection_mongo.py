@@ -13,6 +13,7 @@ users = db['users']
 
 # documento
 user = {
+    '_id': 1,
     'nome': 'João',
     'sobrenome':'fulano de tal'
 }
