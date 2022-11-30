@@ -41,7 +41,7 @@ class Serie(Programa):
         return f'Nome: {self.nome} - {self.temporadas} temporadas - Likes: {self.likes}'
 
 
-class PlayList:
+class PlayList(list):
     def __init__(self, nome, programas):
         self.nome = nome
         self.programas = programas
